@@ -6,22 +6,22 @@ import java.util.List;
 
 public class InvoiceFilter {
 
-	private final InvoiceRepository faturas;
+	private final InvoiceRepository invoices;
 
-	public InvoiceFilter(InvoiceRepository faturas) {
-		this.faturas = faturas;
+	public InvoiceFilter(InvoiceRepository invoiced) {
+		this.invoices = invoiced;
 	}
 	
 	public List<Invoice> filter() {
 		
-		List<Invoice> filtradas = new ArrayList<Invoice>();
+		List<Invoice> filtered = new ArrayList<Invoice>();
 		
-		for(Invoice fatura : faturas.all()) {
-			if (fatura.getAmount() > 2000) filtradas.add(fatura);
-			else if (fatura.getAmount() < 2000 && fatura.getCustomer().equals("MICROSOFT")) filtradas.add(fatura);
-			else if (fatura.getDate().get(Calendar.YEAR) < 1999) filtradas.add(fatura);
+		for(Invoice invoice : invoices.all()) {
+			if (invoice.getAmount() > 2000) filtered.add(invoice);
+			else if (invoice.getAmount() < 2000 && invoice.getCustomer().equals("MICROSOFT")) filtered.add(invoice);
+			else if (invoice.getDate().get(Calendar.YEAR) < 1999) filtered.add(invoice);
 		}
 		
-		return filtradas;
+		return filtered;
 	}
 }
